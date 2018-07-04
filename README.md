@@ -1,6 +1,3 @@
-# DayliQuote
-
-A simple API that send inspirating quotes
 ![dayliQuote image][imgTransparent]
 
 ### TODO :
