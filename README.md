@@ -1,7 +1,7 @@
 # DayliQuote
 
 A simple API that send inspirating quotes
-![dayliQuote image](imgPresentation)
+![dayliQuote image][imgPresentation]
 
 ### TODO :
 
