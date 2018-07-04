@@ -7,22 +7,21 @@ router.get('/', function(req, res) {
   const quote = {
       message: 'C - Is both...',
       author: 'Chapman',
-      isValid: false
+      isAlreadySend: false
   }
 
   saveQuote(quote)
       .then(() => getQuote())
       .then((response) => {
-        console.log(response)
           return res
               .status(response.statusCode)
-              .render('index', { title: response.quote.message})
+              .json(response)
       })
       .catch((error) => {
           console.log()
           return res
               .status(error.statusCode)
-              .render('index', { title: error.message })
+              .json(error.message)
       })
 });
 
