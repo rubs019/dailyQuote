@@ -1,7 +1,7 @@
 # DayliQuote
 
 A simple API that send inspirating quotes
-![dayliQuote image](https://ibb.co/jgxrBd)
+![dayliQuote image](https://imgbb.com/][img]https://image.ibb.co/gzvdrd/dayliquote0.jpg)
 
 ### TODO :
 
