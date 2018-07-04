@@ -1,7 +1,7 @@
 # DayliQuote
 
 A simple API that send inspirating quotes
-![dayliQuote image](https://image.ibb.co/gzvdrd/dayliquote0.jpg)
+![dayliQuote image](imgPresentation)
 
 ### TODO :
 
@@ -15,3 +15,5 @@ A simple API that send inspirating quotes
 **Module CRON :**
 - Install & Configure a CRON module
 - Add A cron task that insert a new quote everyday
+
+[imgPresentation]: https://image.ibb.co/d69PxJ/dayliquote0.png
