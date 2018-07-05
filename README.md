@@ -2,6 +2,8 @@
 
 A simple API that send inspirating quotes
 
+___
+
 ### TODO :
 
 **Global:**
@@ -14,3 +16,8 @@ A simple API that send inspirating quotes
 **Module CRON :**
 - Install & Configure a CRON module
 - Add A cron task that insert a new quote everyday
+
+
+**Already Done**
+- Make a DTOReponse
+-

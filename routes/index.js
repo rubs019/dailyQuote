@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getQuote, saveQuote } = require('../lib/redis')
+const { getQuote, saveQuote, deleteQuote } = require('../lib/redis')
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -9,7 +9,6 @@ router.get('/', function(req, res) {
       author: 'Chapman',
       isAlreadySend: false
   }
-
   saveQuote(quote)
       .then(() => getQuote())
       .then((response) => {
@@ -21,8 +20,23 @@ router.get('/', function(req, res) {
           console.log()
           return res
               .status(error.statusCode)
-              .json(error.message)
+              .json(error)
       })
+});
+
+router.get('/delete', function(req, res) {
+    deleteQuote()
+        .then((response) => {
+            return res
+                .status(response.statusCode)
+                .json(response)
+        })
+        .catch((error) => {
+            console.log()
+            return res
+                .status(error.statusCode)
+                .json(error)
+        })
 });
 
 module.exports = router;
