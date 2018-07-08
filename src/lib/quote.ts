@@ -1,4 +1,3 @@
-const redis = require('./redis')
 const quotes = [{
     message: 'A - Is a message',
     author: 'Someone',
