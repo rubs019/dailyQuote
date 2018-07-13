@@ -7,11 +7,11 @@ ___
 **Global:**
 - Add unit test for each function
 - Add module ESLINT
-- Update to TS ?
 - Get a better error handler
 - Clean unused folder
 - Add a custom logger
 - Add compilation for pug/css files // I don't really need cuz I send only json response
+- Add a documentation for API
 
 **Module CRON :**
 - Install & Configure a CRON module
