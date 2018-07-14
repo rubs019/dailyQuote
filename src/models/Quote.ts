@@ -1,6 +1,6 @@
 export class QuoteModel {
 
-    constructor(name = '', msg, date = null) {
+    constructor(msg, name = '', date = null) {
         this.name = name
         this.msg = msg
         this.date = date
@@ -9,4 +9,5 @@ export class QuoteModel {
     name?: string
     msg: string
     date?: Date | null
+    isAlreadyShow: boolean
 }

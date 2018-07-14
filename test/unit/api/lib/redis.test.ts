@@ -1,5 +1,5 @@
 import * as assert from 'assert'
-import { getQuote } from '../../../src/lib/redis'
+import { getQuote } from '../../../../src/lib/redis'
 
 describe('getQuote()', () => {
     it('Should return something....', () => {

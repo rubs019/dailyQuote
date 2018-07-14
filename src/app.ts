@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 import * as express from 'express'
 import createError from 'http-errors'
 import * as path from 'path'
