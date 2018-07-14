@@ -1,9 +1,9 @@
 import * as assert from 'assert'
-import * as redis  from '../../../lib/redis'
+import { getQuote } from '../../../src/lib/redis'
 
 describe('getQuote()', () => {
     it('Should return something....', () => {
-        const quote = redis.getQuote()
+        const quote = getQuote()
         assert.equal(2, 2)
     })
 })

@@ -1,8 +1,8 @@
 import * as redis from 'redis'
-import { INTERNAL_ERROR, RESOURCE_NOT_FOUND } from './error_definition'
+import { INTERNAL_ERROR, RESOURCE_NOT_FOUND } from '../api/dto/definition'
+import { QuoteModel } from '../models/Quote'
 const client = redis.createClient()
 import { promisify } from 'util'
-const getAsync = promisify(client.get).bind(client)
 
 client.on("error", function (err) {
     console.log(err)
@@ -12,19 +12,17 @@ client.on("connect", function (err) {
     console.log('--- You are connected to Redis Server ---')
 })
 
-/*exports.saveQuote = (quote) => {
-    // TODO: Use promisify
-    return new Promise(((resolve, reject) => {
-        let tempQuote = quote
-        if (typeof(quote) === 'object' && !quote.length) {
-            client.set('quote', JSON.stringify(tempQuote))
-            console.log(`--- A new quote has been created - ${new Date()} ---`)
-            return resolve()
-        } else {
-            return reject(errorServer('Parameters must be an object'))
-        }
-    }))
-}*/
+export const saveQuote = (quote: QuoteModel) => {
+    console.log('--- saveQuote ---', typeof(quote) === 'object')
+    if (typeof(quote) === 'object') {
+        client.set('quote', JSON.stringify(quote))
+        console.log('--- Success ---', quote)
+        return Promise.resolve()
+    } else {
+        console.log('--- err2 ---', 'Parameters must be an object')
+        return Promise.reject('Parameters must be an object')
+    }
+}
 
 /*export const getQuote = () => {
     // TODO: Use promisify
@@ -55,11 +53,13 @@ exports.deleteQuote = () => {
 }*/
 
 export const getQuote = () => {
-    return getAsync()
+    const getAsyncQuote = promisify(client.get).bind(client)
+
+    return getAsyncQuote('quote')
         .then((quote) => {
             console.log('--- quote ---', quote)
 
-            if (!quote) throw {msg: RESOURCE_NOT_FOUND, status: 206}
+            if (!quote) return Promise.reject({msg: RESOURCE_NOT_FOUND, status: 206})
 
             return JSON.parse(quote)
         })

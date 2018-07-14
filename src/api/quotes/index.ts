@@ -1,9 +1,22 @@
 import * as express from 'express'
-import dto from '../dto'
+import { DTO } from '../dto'
+import { QuoteModel } from "../../models/Quote";
 import * as redis from '../../lib/redis'
 
 const router = express.Router()
 const rangeError: number[] = [500, 204, 206]
+
+
+router.get('/save', (req, res) => {
+    const quoteToSave = new QuoteModel('Ruben', 'On connait toutes les techniques')
+    redis.saveQuote(quoteToSave)
+        .then(() => {
+            res.json(DTO.success.sendQuote())
+        })
+        .catch((err) => {
+            res.status(502).send('KO')
+        })
+})
 
 router.get('/', (req, res) => {
     const queryParams = {
@@ -13,21 +26,20 @@ router.get('/', (req, res) => {
     return redis.getQuote()
         .then((quote) => {
 
-            if (quote.code === 'ERR') throw {msg: 'NO CONTENT', status: 206}
+            if (quote.code === 'ERR' || quote.status === 206) throw quote
 
-            return res.json(dto.success.sendQuote(quote))
+            return res.json(DTO.success.sendQuote(quote))
         })
         .catch((err) => {
 
-            // Improve this shit
             if (rangeError.includes(err.status)) {
                 return res
                     .status(err.status)
-                    .json(dto.error.errorServer(err.msg, err.status))
+                    .json(DTO.error.errorServer(err.msg, err.status))
             } else {
                 return res
                     .status(500)
-                    .json(dto.error.errorServer)
+                    .json(DTO.error.errorServer)
             }
         })
 })

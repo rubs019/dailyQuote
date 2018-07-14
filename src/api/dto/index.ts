@@ -1,7 +1,7 @@
-import * as dtoError from './dtoError'
-import * as dtoReponse from './dtoResponse'
+import * as dtoError from './error/dto_error'
+import * as dtoReponse from './success/dtoResponse'
 
-export default {
+export const DTO = {
     error: dtoError,
     success: dtoReponse
 }

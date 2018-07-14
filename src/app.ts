@@ -3,7 +3,7 @@ import createError from 'http-errors'
 import * as path from 'path'
 import * as cookieParser from 'cookie-parser'
 import * as logger from 'morgan'
-import dto from './api/dto'
+import { DTO } from './api/dto'
 
 export const app = express()
 
@@ -31,5 +31,5 @@ app.use(function(err, req, res, next) {
     // render the error page
     res
         .status(err.status || 500)
-        .json(dto.error.pageNotFound())
+        .json(DTO.error.errorServer())
 });
