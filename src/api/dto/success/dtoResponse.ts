@@ -1,8 +1,8 @@
-import { response } from '../definition'
+import { Response } from '../definition'
 
 const date = new Date()
 
-export const send = (quote = null): response => {
+export const send = (quote = null): Response => {
     return {
         statusCode: 200,
         date,
