@@ -12,4 +12,4 @@ const client = sheetsu(config)
 
 export const read = () => client.read({ search: {isAlreadyShow: 'FALSE'}})
 
-export const update = (columnName: string, valueToSearch: string) => client.update(columnName, valueToSearch, {"isAlreadyShow": "true"})
+export const update = (columnName: string, value: string) => client.update(columnName, value, {isAlreadyShow: "FALSE"})

@@ -10,18 +10,6 @@ const rangeError: number[] = [204, 206, 500, 502]
 
 router.post('/save', (req, res) => {
 
-    read()
-        .then((result) => {
-            const parsedRes = JSON.parse(result)
-            console.log(parsedRes[1].message)
-            return update('message', parsedRes[1].message)
-
-        })
-        .then((update) => {
-            console.log('update', update)
-        })
-        .catch((error) => console.log(error))
-
     const args = {
         msg: req.body.msg || undefined,
         name: req.body.name || undefined,
@@ -32,7 +20,7 @@ router.post('/save', (req, res) => {
         return res.json(DTO.error.errorServer('Message / Name cannot be empty', 502))
     }
 
-    const quoteToSave = new QuoteModel(args.msg, args.name, args.date)
+    const quoteToSave = new QuoteModel(args.msg, args.name, args.date, false)
 
     redis.saveQuote(quoteToSave)
         .then(() => {
