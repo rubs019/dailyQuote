@@ -6,18 +6,17 @@ ___
 
 **Global:**
 - Add unit test for each function
-- Add module ESLINT
 - Get a better error handler
-- Clean unused folder
 - Add a custom logger
-- Add compilation for pug/css files // I don't really need cuz I send only json response
 - Add a documentation for API
 
 **Module CRON :**
-- Install & Configure a CRON module
-- Add A cron task that insert a new quote everyday
+- Configure a CRON module
+- Add A cron task that insert a new quote everyday // in progress
 
 **Already Done**
+- Install a CRON module
+- Clean unused folder
 - Make a DTOReponse
 - Make a DTOError
 - Add typescript and make it work

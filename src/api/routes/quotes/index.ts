@@ -1,7 +1,7 @@
 import * as express from 'express'
 import { DTO } from '../../dto/index'
 import { QuoteModel } from "../../../models/Quote";
-import * as redis from '../../../lib/redis'
+import Redis from '../../../lib/redis'
 import Sheetsu  from '../../../sdk/sheetsu'
 
 const router = express.Router()
@@ -21,23 +21,11 @@ router.post('/save', (req, res) => {
     }
 
     const sheetsu = new Sheetsu()
-    sheetsu.randomQuote()
-        .then((quote) => {
-            const quoteToSave = new QuoteModel(quote)
-            return redis.saveQuote(quoteToSave)
-        })
-        .then(() => {
-            return res.json(DTO.success.send())
-        })
-        .catch((err) => {
-            return res
-                .status(err.status)
-                .json(DTO.error.errorServer(err.msg, err.status))
-        })
-
 })
 
 router.get('/', (req, res) => {
+
+    const redis = new Redis()
 
     return redis.getQuote()
         .then((quote) => {
