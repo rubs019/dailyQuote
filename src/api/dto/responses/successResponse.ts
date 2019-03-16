@@ -1,4 +1,4 @@
-import { Response } from '../definition'
+import { Response } from './definition'
 
 const date = new Date()
 

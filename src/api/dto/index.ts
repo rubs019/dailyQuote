@@ -1,5 +1,5 @@
-import * as dtoError from './error/dto_error'
-import * as dtoReponse from './success/dtoResponse'
+import * as dtoError from './responses/errorResponse'
+import * as dtoReponse from './responses/successResponse'
 
 export const DTO = {
     error: dtoError,

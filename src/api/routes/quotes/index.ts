@@ -1,11 +1,9 @@
 import * as express from 'express'
-import { DTO } from '../../dto/index'
-import { QuoteModel } from "../../../models/Quote";
+import { DTO } from '../../dto'
 import Redis from '../../../lib/redis'
-import Sheetsu  from '../../../sdk/sheetsu'
+import { RangeError } from '../../constants'
 
 const router = express.Router()
-const rangeError: number[] = [204, 206, 500, 502]
 
 
 router.post('/save', (req, res) => {
@@ -19,8 +17,6 @@ router.post('/save', (req, res) => {
     if (!args.msg || !args.name) {
         return res.json(DTO.error.errorServer('Message / Name cannot be empty', 502))
     }
-
-    const sheetsu = new Sheetsu()
 })
 
 router.get('/', (req, res) => {
@@ -36,7 +32,7 @@ router.get('/', (req, res) => {
         })
         .catch((err) => {
 
-            if (rangeError.includes(err.status)) {
+            if (RangeError.includes(err.status)) {
                 return res
                     .status(err.status)
                     .json(DTO.error.errorServer(err.msg, err.status))

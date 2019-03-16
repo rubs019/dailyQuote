@@ -1,5 +1,5 @@
 import * as redis from 'redis'
-import { RESOURCE_NOT_FOUND } from '../api/dto/definition'
+import { RESOURCE_NOT_FOUND } from '../api/dto/responses/definition'
 import { QuoteModel } from '../models/Quote'
 import { promisify } from 'util'
 
