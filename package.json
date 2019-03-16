@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist/server.js",
-    "watcher": "supervisor ./dist/server.js",
+    "start:dev": "node --inspect ./dist/server.js",
+    "start:prod": "node ENV='prod' ./dist/server.js",
+    "watcher": "nodemon ./dist/server.js",
     "dev": "tsc -p ./ -w",
+    "tslint": "tslint -p ./",
+    "prettier:check": "prettier --config .prettierrc.json -c \"src/**/*.ts\"",
+    "prettier:format": "prettier --config .prettierrc.json --write \"src/**/*.ts\"",
     "test": "mocha dist/test --recursive"
   },
   "dependencies": {
@@ -21,10 +25,15 @@
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
     "redis": "^2.8.0",
-    "sheetsu-node": "0.0.7"
+    "sheetsu-node": "0.0.7",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "cucumber": "^4.2.1",
+    "eslint": "^5.15.2",
+    "nodemon": "^1.18.10",
+    "prettier": "1.16.4",
+    "tslint": "^5.14.0",
     "typescript": "^2.9.2"
   }
 }

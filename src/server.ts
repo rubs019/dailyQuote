@@ -2,15 +2,16 @@
  * Module dependencies.
  */
 
-import { app } from './app'
 import * as http from 'http'
+import { app } from './app'
+import { Logger } from './helpers/logHelpers'
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '8000')
-app.set('port', port)
+const Port = normalizePort(process.env.PORT || '8000')
+app.set('port', Port)
 
 /**
  * Create HTTP server.
@@ -23,19 +24,20 @@ const server = http.createServer(app)
  */
 
 function normalizePort(val) {
-  const port = parseInt(val, 10);
+    const port = parseInt(val, 10)
+    const minimumPortValue = 0
 
-  if (isNaN(port)) {
-    // named pipe
-    return val;
-  }
+    if (isNaN(port)) {
+        // named pipe
+        return val
+    }
 
-  if (port >= 0) {
-    // port number
-    return port;
-  }
+    if (port >= minimumPortValue) {
+        // port number
+        return port
+    }
 
-  return false;
+    return false
 }
 
 /**
@@ -43,27 +45,26 @@ function normalizePort(val) {
  */
 
 function onError(error) {
-  if (error.syscall !== 'listen') {
-    throw error;
-  }
+    if (error.syscall !== 'listen') {
+        throw error
+    }
 
-  const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+    const bind = typeof Port === 'string' ? 'Pipe ' + Port : 'Port ' + Port
+    const codeError = 1
 
-  // handle specific listen errors with friendly messages
-  switch (error.code) {
-    case 'EACCES':
-      console.error(bind + ' requires elevated privileges');
-      process.exit(1);
-      break;
-    case 'EADDRINUSE':
-      console.error(bind + ' is already in use');
-      process.exit(1);
-      break;
-    default:
-      throw error;
-  }
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            Logger.error(bind + ' requires elevated privileges')
+            process.exit(codeError)
+            break
+        case 'EADDRINUSE':
+            Logger.error(bind + ' is already in use')
+            process.exit(codeError)
+            break
+        default:
+            throw error
+    }
 }
 
 /**
@@ -71,19 +72,19 @@ function onError(error) {
  */
 
 function onListening() {
-  const addr: any = server.address()
+    const addr: any = server.address()
 
-  const ipAdrress: string = addr.address === '::' ? '127.0.0.1' : addr.address
+    const ipAdrress: string = addr.address === '::' ? '127.0.0.1' : addr.address
 
-  console.log(`Listening on ${ipAdrress}:${addr.port}`)
+    // tslint:disable-next-line
+    console.log(`Listening on ${ipAdrress}:${addr.port}`)
 }
-
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
 server
-    .listen(port)
+    .listen(Port)
     .on('error', onError)
     .on('listening', onListening)

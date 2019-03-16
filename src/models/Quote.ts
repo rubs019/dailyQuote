@@ -1,6 +1,21 @@
 export class QuoteModel {
+    public name?: string
+    public message: string
+    public isAlreadyShow: boolean
+    public born?: string
+    public died?: string
+    public nationality?: string
+    public job?: string
 
-    constructor({message, name, isAlreadyShow, born, died, nationality, job}) {
+    constructor({
+        message,
+        name,
+        isAlreadyShow,
+        born,
+        died,
+        nationality,
+        job
+    }) {
         this.name = name
         this.message = message
         this.isAlreadyShow = isAlreadyShow
@@ -9,12 +24,4 @@ export class QuoteModel {
         this.nationality = nationality
         this.job = job
     }
-
-    name?: string
-    message: string
-    isAlreadyShow: boolean
-    born?: string
-    died?: string
-    nationality?: string
-    job?: string
 }

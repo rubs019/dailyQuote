@@ -1,11 +1,14 @@
-import { Response } from './definition'
+import { IResponse } from './definition'
 const date = new Date()
 
-export const errorServer = (message: string = 'Fatal error', statusCode: number = 500): Response => {
+export const errorServer = (
+    message: string = 'Fatal error',
+    statusCode: number = 500
+): IResponse => {
     return {
-        statusCode,
+        data: null,
         date,
         message,
-        data: null
+        statusCode
     }
 }

@@ -1,12 +1,12 @@
-import { Response } from './definition'
+import { IResponse } from './definition'
 
 const date = new Date()
 
-export const send = (quote = null): Response => {
+export const send = (quote = null): IResponse => {
     return {
-        statusCode: 200,
+        data: quote,
         date,
         message: 'success',
-        data: quote
+        statusCode: 200
     }
 }
