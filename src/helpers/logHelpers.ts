@@ -1,12 +1,12 @@
-import * as winston from 'winston'
+import winston from 'winston'
 
 export let Logger
 
 export const turnOnTheLogs = (req, res, next) => {
     Logger = winston.createLogger({
         format: winston.format.combine(
-            winston.format.prettyPrint(),
-            winston.format.timestamp()
+            winston.format.timestamp(),
+            winston.format.simple()
         ),
         level: 'error',
         transports: [new winston.transports.Console()]

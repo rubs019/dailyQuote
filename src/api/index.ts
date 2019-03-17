@@ -1,4 +1,4 @@
-import * as express from 'express'
+import express from 'express'
 import quotes from './routes/quotes'
 
 const router = express.Router()

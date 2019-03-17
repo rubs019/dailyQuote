@@ -1,8 +1,9 @@
-import * as redis from 'redis'
+import redis from 'redis'
 import { promisify } from 'util'
-import * as constants from '../constants'
-import { Logger } from '../helpers/logHelpers'
-import { QuoteModel } from '../models/Quote'
+import * as constants from '../../constants'
+import { Logger } from '../../helpers/logHelpers'
+import { QuoteModel } from '../../models/Quote'
+import { IData } from './definition'
 
 export default class Redis {
     private client = redis.createClient()
@@ -16,23 +17,24 @@ export default class Redis {
             Logger.info('--- You are connected to Redis Server ---')
         })
     }
-    public getQuote(): Promise<QuoteModel> | any {
+    public getQuote(): Promise<IData> {
         const getAsyncQuote = promisify(this.client.get).bind(this.client)
 
-        return getAsyncQuote('quote')
-            .then(quote => {
-                Logger.info('--- quote ---', quote)
+        return getAsyncQuote('quote').then(quote => {
+            Logger.info('--- quote ---', quote)
 
-                if (!quote) {
-                    return {
-                        msg: constants.errorMsg.NOT_FOUND,
+            if (!quote) {
+                return {
+                    error: {
+                        msg: constants.errorMsg.NO_CONTENTS,
                         status: constants.errorStatus.NOT_FOUND
                     }
                 }
-
-                return JSON.parse(quote)
-            })
-            .catch(err => err)
+            }
+            return {
+                quotes: JSON.parse(quote)
+            }
+        })
     }
 
     public saveQuote(quote: QuoteModel) {

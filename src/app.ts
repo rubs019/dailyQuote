@@ -1,19 +1,18 @@
 import 'dotenv/config'
 
-import * as cookieParser from 'cookie-parser'
-import * as express from 'express'
-import * as logger from 'morgan'
-import * as path from 'path'
+import cookieParser from 'cookie-parser'
+import express from 'express'
+import path from 'path'
 import { DTO } from './api/dto'
 import * as constants from './constants'
+import { Logger, turnOnTheLogs } from './helpers/logHelpers'
+
+import indexRouter from './api'
+import Firebase from './lib/firebase/firebase'
 
 export const app = express()
 
-import indexRouter from './api'
-import { Logger, turnOnTheLogs } from './helpers/logHelpers'
-
 app.use(turnOnTheLogs)
-app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
@@ -24,13 +23,15 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use('/', indexRouter)
+
 // catch 404
-app.use((req, res, next) => {
+app.use((req, res) => {
     return res
         .status(constants.errorStatus.NOT_FOUND)
         .json(
             DTO.error.errorServer(
-                constants.errorMsg.NOT_FOUND,
+                constants.errorMsg.PAGE_NOT_FOUND,
                 constants.errorStatus.NOT_FOUND
             )
         )
@@ -47,5 +48,3 @@ app.use((err, req, res) => {
         DTO.error.errorServer()
     )
 })
-
-app.use('/', indexRouter)

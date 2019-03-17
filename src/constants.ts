@@ -16,9 +16,9 @@ export enum errorMsg {
     PARTIAL_CONTENTS = 'partials_content',
     NO_CONTENTS = 'contents_not_found',
     INTERNAL_SERVER_ERROR = 'internal_error',
-    NOT_FOUND = 'not_found'
+    PAGE_NOT_FOUND = 'page_not_found'
 }
 
 export enum customErrorMsg {
-    CONTENTS_NOT_FOUND = "Contents wasn't found"
+    CONTENTS_NOT_FOUND = 'Contents wasn\'t found'
 }

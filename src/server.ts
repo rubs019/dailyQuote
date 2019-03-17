@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-import * as http from 'http'
+import http from 'http'
 import { app } from './app'
 import { Logger } from './helpers/logHelpers'
 
