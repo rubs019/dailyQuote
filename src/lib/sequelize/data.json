@@ -1,0 +1,222 @@
+[
+    {
+      "id": "1",
+      "name": "Willem de Kooning",
+      "message": "Je dois changer pour rester le même",
+      "show": "FALSE",
+      "born": "24/04/1904",
+      "died": "19/03/1997",
+      "nationality": "Néerlandais",
+      "job": "Peintre"
+    },
+    {
+      "id": "2",
+      "name": "Martin Luther King",
+      "message": "Avoir la foi, c’est monter la première marche, même quand on ne voit pas tout l’escalier.",
+      "show": "FALSE",
+      "born": "15/01/1929",
+      "died": "04/04/1968",
+      "nationality": "Américaine",
+      "job": "Activiste"
+    },
+    {
+      "id": "3",
+      "name": "Martin Luther King",
+      "message": "La véritable grandeur d’un homme ne se mesure pas à des moments où il est à son aise, mais lorsqu’il traverse une période de controverses et de défis.",
+      "show": "FALSE",
+      "born": "15/01/1929",
+      "died": "04/04/1968",
+      "nationality": "Américaine",
+      "job": "Activiste"
+    },
+    {
+      "id": "4",
+      "name": "Martin Luther King",
+      "message": "Si vous ne pouvez pas voler, alors courez ; Si vous ne pouvez pas courir, alors marchez ; Si vous ne pouvez pas marcher, alors rampez ; Mais quoique vous fassiez, vous devez continuer à avancer.",
+      "show": "FALSE",
+      "born": "15/01/1929",
+      "died": "04/04/1968",
+      "nationality": "Américaine",
+      "job": "Activiste"
+    },
+    {
+      "id": "5",
+      "name": "Martin Luther King",
+      "message": "L’obscurité ne peut pas chasser l’obscurité ; seule la lumière le peut. La haine ne peut pas chasser la haine ; seul l’amour peut faire cela.",
+      "show": "FALSE",
+      "born": "15/01/1929",
+      "died": "04/04/1968",
+      "nationality": "Américaine",
+      "job": "Activiste"
+    },
+    {
+      "id": "6",
+      "name": "Martin Luther King",
+      "message": "À la fin, nous ne nous souviendrons pas des mots de nos ennemis, mais du silence de nos amis.",
+      "show": "FALSE",
+      "born": "15/01/1929",
+      "died": "04/04/1968",
+      "nationality": "Américaine",
+      "job": "Activiste"
+    },
+    {
+      "id": "7",
+      "name": "Alphonse Karr",
+      "message": "Chaque homme a trois caractères : celui qu'il a, celui qu'il montre, et celui qu'il croit avoir.",
+      "show": "FALSE",
+      "born": "24/10/1808",
+      "died": "29/09/1890",
+      "nationality": "Francaise",
+      "job": "Romancier"
+    },
+    {
+      "id": "8",
+      "name": "Alphonse Karr",
+      "message": "Tout le monde veut avoir un ami. Personne ne s'occupe d'en être un. ",
+      "show": "FALSE",
+      "born": "24/10/1808",
+      "died": "29/09/1890",
+      "nationality": "Francaise",
+      "job": "Romancier"
+    },
+    {
+      "id": "9",
+      "name": "Alphonse Karr",
+      "message": "Le vrai parisien n'aime pas Paris, mais il ne peut vivre ailleurs.",
+      "show": "FALSE",
+      "born": "24/10/1808",
+      "died": "29/09/1890",
+      "nationality": "Francaise",
+      "job": "Romancier"
+    },
+    {
+      "id": "10",
+      "name": "Alphonse Karr",
+      "message": "Je crois au Dieu qui a fait les hommes, et non au Dieu que les hommes ont fait.",
+      "show": "FALSE",
+      "born": "24/10/1808",
+      "died": "29/09/1890",
+      "nationality": "Francaise",
+      "job": "Romancier"
+    },
+    {
+      "id": "11",
+      "name": "Alphonse Karr",
+      "message": "Dans votre bouche comme dans celle de tout le monde, \"il a tort\" veut dire : \"Il ne pense pas comme moi\". \"Il a raison\" signifie : \"Il est de mon avis\".",
+      "show": "TRUE",
+      "born": "24/10/1808",
+      "died": "29/09/1890",
+      "nationality": "Francaise",
+      "job": "Romancier"
+    },
+    {
+      "id": "12",
+      "name": "Alphonse Karr",
+      "message": "On ne voyage pas pour voyager mais pour avoir voyagé.",
+      "show": "FALSE",
+      "born": "24/10/1808",
+      "died": "29/09/1890",
+      "nationality": "Francaise",
+      "job": "Romancier"
+    },
+    {
+      "id": "13",
+      "name": "Alphonse Karr",
+      "message": "Si l'on veut gagner sa vie, il suffit de travailler. Si l'on veut devenir riche, il faut trouver autre chose.",
+      "show": "FALSE",
+      "born": "24/10/1808",
+      "died": "29/09/1890",
+      "nationality": "Francaise",
+      "job": "Romancier"
+    },
+    {
+      "id": "14",
+      "name": "Winston Churchill",
+      "message": "Quand on doit tuer quelqu'un, ça ne coûte rien d'être poli.",
+      "show": "FALSE",
+      "born": "30/11/1874",
+      "died": "24/01/1965",
+      "nationality": "Allemande",
+      "job": "Politicien"
+    },
+    {
+      "id": "15",
+      "name": "Winston Churchill",
+      "message": "Avoir foi en la perfection de l’homme, c’est très bien chez un homme d’Église, pas chez un Premier ministre.",
+      "show": "FALSE",
+      "born": "30/11/1874",
+      "died": "24/01/1965",
+      "nationality": "Allemande",
+      "job": "Politicien"
+    },
+    {
+      "id": "16",
+      "name": "Winston Churchill",
+      "message": "La responsabilité est le prix à payer du succès.",
+      "show": "FALSE",
+      "born": "30/11/1874",
+      "died": "24/01/1965",
+      "nationality": "Allemande",
+      "job": "Politicien"
+    },
+    {
+      "id": "17",
+      "name": "\tHousni Mkouboi",
+      "message": "Te prends pas la tête, même les prophètes n'ont pas mis tout le monde d'accord ",
+      "show": "FALSE",
+      "born": "15/12/1977",
+      "died": "null",
+      "nationality": "Comorienne",
+      "job": "Artiste"
+    },
+    {
+      "id": "18",
+      "name": "Winston Churchill",
+      "message": "La responsabilité est le prix à payer du succès.",
+      "show": "FALSE",
+      "born": "30/11/1874",
+      "died": "24/01/1965",
+      "nationality": "Allemande",
+      "job": "Politicien"
+    },
+    {
+      "id": "19",
+      "name": "Winston Churchill",
+      "message": "Un conciliateur c'est quelqu'un qui nourrit un crocodile en espérant qu'il sera le dernier à être mangé.",
+      "show": "FALSE",
+      "born": "30/11/1874",
+      "died": "24/01/1965",
+      "nationality": "Allemande",
+      "job": "Politicien"
+    },
+    {
+      "id": "20",
+      "name": "Winston Churchill",
+      "message": "Il ne sert à rien de dire “Nous avons fait de notre mieux”. Il faut réussir à faire ce qui est nécessaire.",
+      "show": "FALSE",
+      "born": "30/11/1874",
+      "died": "24/01/1965",
+      "nationality": "Allemande",
+      "job": "Politicien"
+    },
+    {
+      "id": "21",
+      "name": "Lord JAMAR",
+      "message": "Don't let the wolf smell fear",
+      "show": "FALSE",
+      "born": "null",
+      "died": "null",
+      "nationality": "Américaine",
+      "job": "Rappeur"
+    },
+    {
+      "id": "22",
+      "name": "Hippocrate",
+      "message": "La vie est courte, l'art est longue",
+      "show": "FALSE",
+      "born": "460 AVJC",
+      "died": "377 AVJC",
+      "nationality": "Grec",
+      "job": "Médecin"
+    }
+]

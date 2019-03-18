@@ -1,9 +1,10 @@
 import express from 'express'
 import * as constants from '../../../constants'
+import { Logger } from '../../../helpers/logHelpers'
+import { Redis } from '../../../lib/redis/CRedis'
 import { IData } from '../../../lib/redis/definition'
-import Redis from '../../../lib/redis/redis'
+import { sequelize } from '../../../lib/sequelize'
 import { DTO } from '../../dto'
-import { Firebase } from '../../../lib/firebase/firebase'
 
 const router = express.Router()
 
@@ -18,30 +19,37 @@ router.post('/save', (req, res) => {
         return res.json(
             DTO.error.errorServer(
                 'Message / Name cannot be empty',
-                constants.errorStatus.INTERNAL_SERVER_ERROR
+                constants.httpStatus.INTERNAL_SERVER_ERROR
             )
         )
     }
 })
 
 router.get('/', async (req, res) => {
-    const cache: Redis = new Redis()
-    const t = Firebase.db
-
+    let quote: IData
     try {
-        const quote: IData = await cache.getQuote()
-        if (
-            quote.error.status !== constants.errorStatus.NOT_FOUND
-        ) {
-            return res.json(DTO.success.send(quote))
+        quote = await Redis.getQuote()
+        if (quote.error.status !== constants.httpStatus.NOT_FOUND) {
+            return res.json(
+                DTO.success.send(quote, constants.dataEnvironment.cache)
+            )
+        }
+        Logger.info('No contents was found in Redis')
+        // Search in DBB
+        const quotesModel = sequelize.model('quotes')
+        quote = await quotesModel.findAll()
+        if (quote) {
+            return res.json(
+                DTO.success.send(quote, constants.dataEnvironment.ddb)
+            )
         }
 
         return res
-            .status(constants.errorStatus.NOT_FOUND)
+            .status(constants.httpStatus.NOT_FOUND)
             .json(
                 DTO.error.errorServer(
-                    constants.customErrorMsg.CONTENTS_NOT_FOUND,
-                    constants.errorStatus.NOT_FOUND
+                    constants.customHttpMsg.CONTENTS_NOT_FOUND,
+                    constants.httpStatus.NOT_FOUND
                 )
             )
     } catch (err) {
@@ -51,10 +59,31 @@ router.get('/', async (req, res) => {
                 .json(DTO.error.errorServer(err.msg, err.status))
         } else {
             return res
-                .status(constants.errorStatus.INTERNAL_SERVER_ERROR)
+                .status(constants.httpStatus.INTERNAL_SERVER_ERROR)
                 .json(DTO.error.errorServer)
         }
     }
+})
+
+router.get('/id/:id', async (req, res) => {
+    const quotesModel = sequelize.model('quotes')
+    const quote = await quotesModel.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+    if (quote) {
+        return res.json(DTO.success.send(quote, constants.dataEnvironment.ddb))
+    }
+
+    return res
+        .status(constants.httpStatus.NOT_FOUND)
+        .json(
+            DTO.error.errorServer(
+                constants.customHttpMsg.CONTENTS_NOT_FOUND,
+                constants.httpStatus.NOT_FOUND
+            )
+        )
 })
 
 export default router

@@ -25,7 +25,11 @@
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
     "redis": "^2.8.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^5.1.0",
+    "sequelize-typescript": "^1.0.0-alpha.9",
     "sheetsu-node": "0.0.7",
+    "sqlite3": "^4.0.6",
     "winston": "^3.2.1"
   },
   "devDependencies": {

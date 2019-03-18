@@ -5,10 +5,11 @@ import { Logger } from '../../helpers/logHelpers'
 import { QuoteModel } from '../../models/Quote'
 import { IData } from './definition'
 
-export default class Redis {
-    private client = redis.createClient()
+class CRedis {
+    private client
 
     constructor() {
+        this.client = redis.createClient()
         this.client.on('error', err => {
             Logger.error(err)
         })
@@ -26,8 +27,8 @@ export default class Redis {
             if (!quote) {
                 return {
                     error: {
-                        msg: constants.errorMsg.NO_CONTENTS,
-                        status: constants.errorStatus.NOT_FOUND
+                        msg: constants.httpMsg.NO_CONTENTS,
+                        status: constants.httpStatus.NOT_FOUND
                     }
                 }
             }
@@ -37,17 +38,21 @@ export default class Redis {
         })
     }
 
-    public saveQuote(quote: QuoteModel) {
+    public saveQuote(quote: QuoteModel): Promise<IData> {
         Logger.info('--- saveQuote ---', typeof quote === 'object')
         if (typeof quote === 'object') {
             this.client.set('quote', JSON.stringify(quote))
             Logger.info('--- Success ---', quote)
-            return Promise.resolve()
+            return Promise.resolve({})
         } else {
             return Promise.reject({
-                msg: 'Parameters must be an object',
-                status: constants.errorStatus.INTERNAL_SERVER_ERROR
+                error: {
+                    msg: 'Parameters must be an object',
+                    status: constants.httpStatus.INTERNAL_SERVER_ERROR
+                }
             })
         }
     }
 }
+
+export const Redis = new CRedis()

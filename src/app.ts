@@ -5,14 +5,12 @@ import express from 'express'
 import path from 'path'
 import { DTO } from './api/dto'
 import * as constants from './constants'
-import { Logger, turnOnTheLogs } from './helpers/logHelpers'
+import { Logger } from './helpers/logHelpers'
+import { loadSequelize } from './lib/sequelize'
 
 import indexRouter from './api'
-import Firebase from './lib/firebase/firebase'
 
 export const app = express()
-
-app.use(turnOnTheLogs)
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
@@ -23,16 +21,18 @@ app.use((req, res, next) => {
     next()
 })
 
+app.use(loadSequelize)
+
 app.use('/', indexRouter)
 
 // catch 404
 app.use((req, res) => {
     return res
-        .status(constants.errorStatus.NOT_FOUND)
+        .status(constants.httpStatus.NOT_FOUND)
         .json(
             DTO.error.errorServer(
-                constants.errorMsg.PAGE_NOT_FOUND,
-                constants.errorStatus.NOT_FOUND
+                constants.httpMsg.PAGE_NOT_FOUND,
+                constants.httpStatus.NOT_FOUND
             )
         )
 })
@@ -44,7 +44,7 @@ app.use((err, req, res) => {
     res.locals.error = req.app.get('env') === 'development' ? err : {}
 
     // render the error page
-    res.status(err.status || constants.errorStatus.INTERNAL_SERVER_ERROR).json(
+    res.status(err.status || constants.httpStatus.INTERNAL_SERVER_ERROR).json(
         DTO.error.errorServer()
     )
 })
