@@ -1,5 +1,4 @@
 import { IResponse } from './definition'
-const date = new Date()
 
 export const errorServer = (
     message: string = 'Fatal error',
@@ -7,7 +6,7 @@ export const errorServer = (
 ): IResponse => {
     return {
         data: null,
-        date,
+        date: new Date(),
         message,
         statusCode
     }

@@ -9,6 +9,7 @@ ___
 - Get a better error handler
 - Add a custom logger
 - Add a documentation for API
+- Add a version incrementation when I push on master
 
 **Module CRON :**
 - Configure a CRON module
