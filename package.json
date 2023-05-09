@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "start": "node build/run.js",
     "build" : "tsc -p tsconfig.json",
     "dev": "nodemon src/run.ts",
     "test:all": "mocha --require ts-node/register test/**/*.test.ts"
