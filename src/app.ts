@@ -7,7 +7,7 @@ import {errorMsg, errorStatus} from './errors'
 
 export const app = express()
 
-import indexRouter from './api'
+import api from './api'
 import { Logger, turnOnTheLogs } from './helpers/logHelpers'
 
 app.use(turnOnTheLogs)
@@ -18,6 +18,8 @@ app.use((req, res, next) => {
     Logger.info(`The current environment is : ${process.env.NODE_ENV}`)
     next()
 })
+
+app.use('/', api)
 
 // catch 404
 app.use((req, res) => {
@@ -42,5 +44,3 @@ app.use((req, res, next) => {
         DTO.error.errorServer()
     )*/
 })
-
-app.use('/', indexRouter)

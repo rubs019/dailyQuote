@@ -1,6 +1,8 @@
 import * as express from 'express'
-import * as constants from '../../../constants'
-import { DTO } from '../../dto'
+import {
+ errorStatus
+} from '../../errors'
+import { DTO } from '../dto'
 
 const router = express.Router()
 
@@ -15,7 +17,7 @@ router.post('/save', (req, res) => {
         return res.json(
             DTO.error.errorServer(
                 'Message / Name cannot be empty',
-                constants.errorStatus.INTERNAL_SERVER_ERROR
+                errorStatus.INTERNAL_SERVER_ERROR
             )
         )
     }
