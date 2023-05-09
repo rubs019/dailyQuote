@@ -1,7 +1,7 @@
-import {Author} from "./Author";
+import { Author } from './Author';
 
 export interface Quote {
-    name?: string
+    name: string
     message: string
     isAlreadyShow: boolean
     author: Author

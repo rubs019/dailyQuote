@@ -1,12 +1,12 @@
 import * as assert from "assert";
-import Server from "../src/server";
+import AppServer from "../src/server";
 const request = require('supertest');
 
 describe('E2E', () => {
-    const TestServer = new Server();
+    const TestServer = new AppServer();
     describe('/healthcheck', () => {
         before(() => {
-            TestServer.createServer({env: 'test'});
+            TestServer.startServer({env: 'test'});
         })
         
         after(() => {

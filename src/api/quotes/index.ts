@@ -1,30 +1,26 @@
-import * as express from 'express'
+import * as express from 'express';
 import {
- errorStatus
-} from '../../errors'
-import { DTO } from '../dto'
+	errorStatus
+} from '../errors';
+import { DTO } from '../dto';
 
-const router = express.Router()
+const router = express.Router();
 
 router.post('/save', (req, res) => {
-    const args = {
-        date: req.body.date,
-        msg: req.body.msg || undefined,
-        name: req.body.name || undefined
-    }
+	const args = {
+		date: req.body.date,
+		msg: req.body.msg || undefined,
+		name: req.body.name || undefined
+	};
 
-    if (!args.msg || !args.name) {
-        return res.json(
-            DTO.error.errorServer(
-                'Message / Name cannot be empty',
-                errorStatus.INTERNAL_SERVER_ERROR
-            )
-        )
-    }
-})
+	if (!args.msg || !args.name) {
+		return res.json(
+			DTO.error.errorServer(
+				'Message / Name cannot be empty',
+				errorStatus.INTERNAL_SERVER_ERROR
+			)
+		);
+	}
+});
 
-router.get('/', (req, res) => {
-    /* TODO */ 
-})
-
-export default router
+export default router;

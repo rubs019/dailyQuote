@@ -13,5 +13,5 @@ export enum errorMsg {
 }
 
 export enum customErrorMsg {
-    CONTENTS_NOT_FOUND = "Contents wasn't found"
+    CONTENTS_NOT_FOUND = 'Contents wasn\'t found'
 }
